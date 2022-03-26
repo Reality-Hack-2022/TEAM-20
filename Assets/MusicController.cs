@@ -24,8 +24,6 @@ public class MusicController : MonoBehaviour
     {
 
         // Just hardcode the index of this song
-        audioSource.clip = sound[1];
-        audioSource.Play();
     }
 
     public void Play()

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EEGController : MonoBehaviour
 {
-    public static int EEG_AVERAGE_TIME = 10;
+    public static int EEG_AVERAGE_TIME = 3;
 
     public GameObject focusSphere;
     public GameObject happinessSphere;
@@ -16,6 +16,8 @@ public class EEGController : MonoBehaviour
     private static List<PlayerState> averages = new List<PlayerState>();
     private static PlayerState currState = new PlayerState{focus = 0, happiness = 0, flow = 0, heartrate = 0};
     private static int numMeasurements = 0;
+
+    private static float lastUpdateTime = 0;
     private static float elapsedTime = 0;
     
     void Start()
@@ -24,7 +26,8 @@ public class EEGController : MonoBehaviour
         //happinessSphere.SetActive(true);
         //flowSphere.SetActive(true);
         //heartrateSphere.SetActive(true);
-        StartCoroutine(getRequest("http://192.168.33.57:9000/brain"));
+        StartCoroutine(getRequest("http://192.168.13.157:9000/brain"));
+        lastUpdateTime = Time.realtimeSinceStartup;
     }
 
     // Update is called once per frame
@@ -75,8 +78,7 @@ public class EEGController : MonoBehaviour
                 //    heartrateSphere.transform.position.z
                 //);
 
-                numMeasurements++;
-                elapsedTime += Time.deltaTime;
+                elapsedTime += Time.realtimeSinceStartup - lastUpdateTime;
                 currState = new PlayerState
                 {
                     focus = currState.focus + focusValue,
@@ -85,11 +87,14 @@ public class EEGController : MonoBehaviour
                     heartrate = currState.heartrate + heartrateValue
                 };
 
-                if (focusValue == -1 || happinessValue == -1 || zoneValue == -1 || heartrateValue == -1)
+                Debug.Log("MEASURE " + currState.focus + ", " + currState.happiness + ", " + currState.flow + ", " + currState.heartrate);
+                if (focusValue == -1 || happinessValue == -1 || zoneValue == -1)
                 {
-                    yield return null;
+                    yield break;
                 }
 
+                numMeasurements++;
+                Debug.Log("ELAPSED: " + elapsedTime);
                 if (elapsedTime > EEG_AVERAGE_TIME)
                 {
                     currState = new PlayerState
@@ -99,13 +104,16 @@ public class EEGController : MonoBehaviour
                         flow = currState.flow / numMeasurements,
                         heartrate = currState.heartrate / numMeasurements
                     };
-
-                    Debug.Log("NEW AVERAGE " + currState.focus + " " + currState.happiness + " " + currState.flow + " " + currState.heartrate);
-
                     averages.Add(currState);
-                    currState = new PlayerState { focus = 0, happiness = 0, flow = 0, heartrate = 0 };
+                    Debug.Log("NEW AVERAGE " + currState.focus + " " + currState.happiness + " " + currState.flow + " " + currState.heartrate);
+                    
+                    currState.focus = 0;
+                    currState.happiness = 0;
+                    currState.flow = 0;
+                    currState.heartrate = 0;
                     numMeasurements = 0;
                     elapsedTime = 0;
+                    lastUpdateTime = Time.realtimeSinceStartup;
                 }
 
                 yield return new WaitForSeconds(1);

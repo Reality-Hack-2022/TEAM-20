@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FocusGameController : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class FocusGameController : MonoBehaviour
 
     private MusicController musicController = new MusicController();
     private int sphereCount = 8;
-    private float radius = 0.5f;
+    private float radius = 0.2f;
     private int randIdxOne = 0;
     private int randIdxTwo = 0;
 
@@ -21,7 +22,7 @@ public class FocusGameController : MonoBehaviour
 
         for (int i = 0; i < sphereCount; i++)
         {
-            GameObject sphere = Instantiate(spherePrefab, new Vector3(Mathf.Cos(Mathf.PI * 2.0f / sphereCount * i) * radius, Mathf.Sin(Mathf.PI * 2.0f / sphereCount * i) * radius + .2f, 1), Quaternion.identity);
+            GameObject sphere = Instantiate(spherePrefab, new Vector3(Mathf.Cos(Mathf.PI * 2.0f / sphereCount * i) * radius, Mathf.Sin(Mathf.PI * 2.0f / sphereCount * i) * radius, 1), Quaternion.identity);
             sphere.SetActive(true);
             Rigidbody gameObjectsRigidBody = sphere.AddComponent<Rigidbody>(); // Add the rigidbody.
             gameObjectsRigidBody.useGravity = false;
@@ -48,6 +49,7 @@ public class FocusGameController : MonoBehaviour
     public int MOVE_SEQ_TIME = 15;
     private bool showMoveSeq = false;
 
+    public int END_SEQ_TIME = 5;
     private bool showSelectSeq = false;
 
     private float elapsedTime = 0;
@@ -85,11 +87,15 @@ public class FocusGameController : MonoBehaviour
             for (int i = 0; i < sphereCount; i++)
             {
                 rigidBodies[i].velocity = new Vector3(0, 0, 0);
-
-                // Add a collider for the users hand
             }
+
+            sphereList[randIdxOne].transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+            sphereList[randIdxTwo].transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
         }
 
-        
+        if (showSelectSeq && elapsedTime > END_SEQ_TIME)
+        {
+            SceneManager.LoadScene("MainExperience", LoadSceneMode.Single);
+        }
     }
 }

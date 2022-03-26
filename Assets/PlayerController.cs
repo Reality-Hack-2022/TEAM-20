@@ -13,7 +13,8 @@ public struct PlayerState
 
 public class PlayerController : MonoBehaviour
 {
-    public int TIME_TILL_FLOW_LOST = 20;
+    // Seconds
+    public int TIME_TILL_FLOW_LOST = 60;
     public int QUERY_EEG_THRESH = 1;
     public int FLOW_THRESHOLD = 70;
     public int DANGER_THRESHOLD = 50;
@@ -43,7 +44,9 @@ public class PlayerController : MonoBehaviour
         if (timeCounter > QUERY_EEG_THRESH)
         {
             timeCounter = 0;
-            lastState = EEGController.GetAverageState(20);
+            lastState = EEGController.GetAverageState(60);
+            Debug.Log("LAST AVG " + lastState.focus + ", " + lastState.happiness + ", " + lastState.flow + ", " + lastState.heartrate);
+           
             if (lastState.flow < 70)
             {
                 inFlow = false;
@@ -61,14 +64,17 @@ public class PlayerController : MonoBehaviour
             // Evaluate whether the user is bored or whether the user is unhappy
             if (lastState.focus < DANGER_THRESHOLD && lastState.happiness < DANGER_THRESHOLD)
             {
+                Debug.Log("NONE");
                 SceneManager.LoadScene("CalmGame", LoadSceneMode.Single);
             }
             else if (lastState.focus < DANGER_THRESHOLD)
             {
+                Debug.Log("Focus");
                 SceneManager.LoadScene("FocusGame", LoadSceneMode.Single);
             }
             else if (lastState.happiness < DANGER_THRESHOLD)
             {
+                Debug.Log("Calm");
                 SceneManager.LoadScene("CalmGame", LoadSceneMode.Single);
             }
         }

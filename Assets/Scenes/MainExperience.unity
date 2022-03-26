@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 448945022785841422, guid: 97e77b91a85a1c844aee31efd81859a2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 448945022785841422, guid: 97e77b91a85a1c844aee31efd81859a2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -204,7 +204,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 448945024179261787, guid: 97e77b91a85a1c844aee31efd81859a2, type: 3}
       propertyPath: m_text
-      value: Flow Library
+      value: Calm Game
       objectReference: {fileID: 0}
     - target: {fileID: 448945024179261787, guid: 97e77b91a85a1c844aee31efd81859a2, type: 3}
       propertyPath: m_fontSize
@@ -699,7 +699,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 448945022785841422, guid: 97e77b91a85a1c844aee31efd81859a2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 448945022785841422, guid: 97e77b91a85a1c844aee31efd81859a2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -707,27 +707,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 448945022785841422, guid: 97e77b91a85a1c844aee31efd81859a2, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99484766
+      value: 0.99484813
       objectReference: {fileID: 0}
     - target: {fileID: 448945022785841422, guid: 97e77b91a85a1c844aee31efd81859a2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.045127295
+      value: 0.045123596
       objectReference: {fileID: 0}
     - target: {fileID: 448945022785841422, guid: 97e77b91a85a1c844aee31efd81859a2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.090690635
+      value: 0.0906871
       objectReference: {fileID: 0}
     - target: {fileID: 448945022785841422, guid: 97e77b91a85a1c844aee31efd81859a2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0041138185
+      value: -0.00411332
       objectReference: {fileID: 0}
     - target: {fileID: 448945022785841422, guid: 97e77b91a85a1c844aee31efd81859a2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 5.194
       objectReference: {fileID: 0}
     - target: {fileID: 448945022785841422, guid: 97e77b91a85a1c844aee31efd81859a2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 10.417
       objectReference: {fileID: 0}
     - target: {fileID: 448945022785841422, guid: 97e77b91a85a1c844aee31efd81859a2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -755,7 +755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 448945024179261787, guid: 97e77b91a85a1c844aee31efd81859a2, type: 3}
       propertyPath: m_text
-      value: About Flow
+      value: Focus Game
       objectReference: {fileID: 0}
     - target: {fileID: 448945024179261787, guid: 97e77b91a85a1c844aee31efd81859a2, type: 3}
       propertyPath: m_fontSize
@@ -1101,6 +1101,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1363942169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1363942170}
+  m_Layer: 0
+  m_Name: Audio Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1363942170
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363942169}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.12497743, y: -0.13427547, z: 0.9453484}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1395519891
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,6 +1142,7 @@ GameObject:
   - component: {fileID: 1395519893}
   - component: {fileID: 1395519892}
   - component: {fileID: 1395519894}
+  - component: {fileID: 1395519895}
   m_Layer: 0
   m_Name: MixedRealitySceneContent
   m_TagString: Untagged
@@ -1168,6 +1199,22 @@ MonoBehaviour:
   happinessSphere: {fileID: 1724382264}
   flowSphere: {fileID: 1195489556}
   heartrateSphere: {fileID: 545183276}
+--- !u!114 &1395519895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395519891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db48c8eb4e8ef9c42946fcec115e4435, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TIME_TILL_FLOW_LOST: 20
+  QUERY_EEG_THRESH: 1
+  FLOW_THRESHOLD: 70
+  DANGER_THRESHOLD: 50
 --- !u!1 &1724382264
 GameObject:
   m_ObjectHideFlags: 0

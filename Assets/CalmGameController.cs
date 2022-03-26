@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 public class CalmGameController : MonoBehaviour
 {
     public GameObject spherePrefab;
@@ -37,7 +36,7 @@ public class CalmGameController : MonoBehaviour
     {
         if (scale > maxScale || scale < minScale)
         {
-            if (scaleDirection == -1)
+            if (scale < minScale)
             {
                 counter++;
             }
